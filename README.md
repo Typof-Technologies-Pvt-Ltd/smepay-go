@@ -46,7 +46,7 @@ Create one `Client` and reuse it. Every call takes a `context.Context`; each req
 
 `Initiate` can be called again if a payment failed or expired. Alternatively, skip `Initiate` and redirect the customer to `PaymentURL` (the hosted page); use one or the other per order.
 
-**Statuses** (`smepay.Status…` constants): `CREATED` → `INITIATED` / `PENDING` → `SUCCESS` or `FAILED` / `EXPIRED`; also `SETTLED`, `REFUNDED`, `REFUND_PENDING`. Test-mode businesses get `TEST_SUCCESS`, `TEST_FAILED`, `TEST_PENDING`.
+**Statuses** (`smepay.Status…` constants): `CREATED` → `INITIATED` / `PENDING` → `SUCCESS` or `FAILED` / `EXPIRED`; also `REFUNDED`, `REFUND_PENDING`. Test-mode businesses get `TEST_SUCCESS`, `TEST_FAILED`, `TEST_PENDING`.
 
 ## Errors
 
@@ -84,7 +84,7 @@ Calls are never retried automatically, so a failed `Create` is never sent twice.
 
 ## Webhooks
 
-When a payment finishes, SMEPay POSTs JSON to your `CallbackURL`: `ref_id` (your order ID), `status`, `transaction_id`, `amount` (string, e.g. `"100.00"`), `created_at` / `processed_at` (ISO-8601) and `utr` (when available). Reply with any `2xx` quickly; other replies are retried, so handle duplicates. Confirm with `Payment.GetStatus` before marking an order paid.
+When an order reaches a final result (`SUCCESS` / `FAILED` / `REFUNDED`), SMEPay POSTs JSON to your `CallbackURL`: `ref_id` (your order ID), `status`, `transaction_id`, `amount` (string, e.g. `"100.00"`), `created_at` / `processed_at` (ISO-8601) and `utr` (when available). Reply with `2xx` quickly; if your server is down or returns `5xx` it is retried (up to 12 h), `4xx` is not, so handle duplicates. Confirm with `Payment.GetStatus` before marking an order paid.
 
 ## Security
 
