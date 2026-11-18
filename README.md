@@ -60,8 +60,8 @@ if errors.As(err, &e) && e.Code == "duplicate_order_id" { /* ... */ }
 | Code | Meaning |
 |---|---|
 | `invalid_config` | Missing `ClientID` / `ClientSecret`, or bad `Environment` |
-| `invalid_client_id`, `invalid_credentials` | Wrong credentials |
-| `environment_mismatch` | `Environment` doesn't match your business's mode |
+| `invalid_client_id`, `invalid_credentials` | Wrong credentials (the Client Secret changes when you go live) |
+| `invalid_endpoint` | `Environment` doesn't match your business's mode (see the Test/Live badge on API Credentials) |
 | `ip_not_whitelisted` | Live: your server IP isn't whitelisted (ask SMEPay support) |
 | `api_not_enabled` | External API not enabled for your business (contact SMEPay) |
 | `insufficient_wallet_balance`, `wallet_validation_failed` | Wallet balance too low (live needs ≥ ₹10) |
