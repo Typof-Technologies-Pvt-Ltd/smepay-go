@@ -22,7 +22,7 @@ import (
 	"strings"
 	"time"
 
-	smepay "github.com/mahi-qwe/smepay-go"
+	smepay "github.com/Typof-Technologies-Pvt-Ltd/smepay-go"
 )
 
 func main() {

@@ -1,3 +1,3 @@
-module github.com/mahi-qwe/smepay-go
+module github.com/Typof-Technologies-Pvt-Ltd/smepay-go
 
 go 1.21

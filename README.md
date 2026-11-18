@@ -5,13 +5,13 @@ Official Go SDK for the SMEPay External API. Accept UPI payments in three calls;
 Go 1.21+ · standard library only · safe for concurrent use.
 
 ```bash
-go get github.com/mahi-qwe/smepay-go
+go get github.com/Typof-Technologies-Pvt-Ltd/smepay-go
 ```
 
 ## Usage
 
 ```go
-import smepay "github.com/mahi-qwe/smepay-go"
+import smepay "github.com/Typof-Technologies-Pvt-Ltd/smepay-go"
 
 client, err := smepay.New(smepay.Config{
 	ClientID:     os.Getenv("SMEPAY_CLIENT_ID"), // from the SMEPay dashboard
